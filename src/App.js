@@ -78,10 +78,10 @@ function App() {
         onKeyDown={handleKeyDown}
       />
 
-      <button className="addButton" onClick={() => addItem()} >
+      <button className="addButton" title="add" onClick={() => addItem()} >
         <text className="addText">✎</text>
         </button>
-      <button className="refreshButton" onClick={() => refresh()}>
+      <button className="refreshButton" title="refresh" onClick={() => refresh()}>
         <text className="refreshText">☄︎</text>
       </button>
 
@@ -91,7 +91,7 @@ function App() {
           return(
             <li className="li" key={item.id}>
               {item.value} {' '}
-              <button className="deleteButton" onClick={() => deleteItem(item.id)}>  </button>
+              <button className="deleteButton" title="finished !" onClick={() => deleteItem(item.id)}>  </button>
             </li>
           )
         })}

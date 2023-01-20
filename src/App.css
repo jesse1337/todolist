@@ -39,12 +39,20 @@
   margin-left: 5px;
   width: 25px;
 }
+.addButton:hover {
+  border: 1px solid rgb(139, 139, 139);
+  background-color: rgb(182, 181, 181);
+}
 .refreshButton {
   border: none;
   border-radius: 30%;
   margin-left: 5px;
   font-size: 20px;
   width: 25px;  
+}
+.refreshButton:hover {
+  border: 1px solid rgb(139, 139, 139);
+  background-color: rgb(182, 181, 181);
 }
 .addText {
   font-size: 20px;
@@ -62,6 +70,7 @@
 
 .deleteButton:hover {
   transform: scale(0.9);
+
 }
 
 .li {
