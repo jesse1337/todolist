@@ -1,38 +1,69 @@
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  height: 100vh;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: rgb(78, 78, 78);
+}
+.todo {
+  font-size: 40px;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+.done {
+  font-size: 30px;
+  padding-top: 50px;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+.input {
+  font-size: 20px;
+}
+.addButton{
+  border: none;
+  
+  border-radius: 30%;
+  margin-left: 10px;
+
+}
+.refreshButton {
+  border: none;
+  border-radius: 30%;
+  margin-left: 5px;
+  font-size: 20px;
+}
+.addText {
+  font-size: 20px;
+}
+.refreshText {
+  font-size: 15px;
+}
+.deleteButton {
+    border: none;
+    font-size: 20px;
+    border-radius: 30%;
+    height: 15px;
+    width: 15px;
 }
 
-.App-link {
-  color: #61dafb;
+.deleteButton:hover {
+  transform: scale(0.9);
+}
+.li {
+  padding:5px;
+  font-size: 25px;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  color: rgb(176, 129, 129);
+}
+.doneli {
+  padding:5px;
+  font-size: 20px;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  color: rgb(134, 158, 134);
+}
+.ul {
+  padding:10px;
+
+}
+.doneul {
+  padding: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
