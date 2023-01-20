@@ -9,15 +9,25 @@ function App() {
 
   const [history, setHistory] = useState([]);
 
+  const day = {weekday: "long"};
+  const theDay = (new Date().toLocaleString("en-US", day)).toLowerCase();
+
+  const date = {day: "numeric"};
+  const theDate = (new Date().toLocaleString("en-US", date));
+
+  const month = {month: "long"};
+  const theMonth = (new Date().toLocaleString("en-US", month)).toLowerCase();
+
+
   // Functions
+
+
+
   const handleKeyDown = (event) => {
     if(event.key == 'Enter') {
       addItem();
     }
-  }
-  
-
-  
+  }  
 
   function addItem() {
 
@@ -42,6 +52,7 @@ function App() {
     setHistory(oldList => [...oldList, doneItem]);
 
     const newArr = items.filter((item) => item.id !== id);
+    console.log('first delete arr: ' + newArr)
     setItems(newArr);    
 
   }
@@ -54,6 +65,10 @@ function App() {
   return (
     <div className="App">
       {/* 1. Header */}
+      
+      <h2 className="today">today is
+       <text className="date"> {theDay} <text className="dash">-</text> {theMonth} {theDate}</text>
+      </h2>
       <h1 className="todo"> to do ✗ :</h1>
 
       <input className="input" type="text" 
@@ -89,8 +104,8 @@ function App() {
         {history.map(item => {
           return(
             <li className="doneli" key={item.id}>
-              {item.value} {'✓'}
-           </li>
+              {item.value} {' '}
+            </li>
         )
         })}
       </ul>
