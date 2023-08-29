@@ -227,7 +227,6 @@ function App() {
           </div>
         </>
       )}
-
       <h2 className="today">
         today is
         <text className="date">
@@ -237,7 +236,6 @@ function App() {
         </text>
       </h2>
       <h1 className="todo"> to do ✗ :</h1>
-
       <input
         className="input"
         type="text"
@@ -248,7 +246,6 @@ function App() {
         }
         onKeyDown={handleKeyDown}
       />
-
       <button className="addButton" title="add" onClick={() => addItem()}>
         <text className="addText">✎</text>
       </button>
@@ -259,12 +256,11 @@ function App() {
       >
         <text className="refreshText">☄︎</text>
       </button>
-
       <ul className="ul">
         {state.items.map((item) => {
           return (
             <li className="li" key={item.id}>
-              {item.value}
+              {item.value}{" "}
               <button
                 className="deleteButton"
                 title="finished !"
@@ -276,7 +272,7 @@ function App() {
           );
         })}
       </ul>
-
+      // testing git ddodododo
       <br />
       <text className="msg">{displayMsg()}</text>
       <h2 className="done">done ✔︎ :</h2>
