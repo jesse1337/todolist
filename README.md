@@ -1,3 +1,10 @@
+For Author:
+to make changes:
+  - git status
+  - git commit -m "MESSAGE"
+  - git push
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

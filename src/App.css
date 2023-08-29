@@ -50,6 +50,10 @@
   border: 1px solid rgb(139, 139, 139);
   background-color: rgb(182, 181, 181);
 }
+.addButton:hover {
+  border: 1px solid rgb(139, 139, 139);
+  background-color: rgb(182, 181, 181);
+}
 .refreshButton {
   border: none;
   border-radius: 30%;
