@@ -254,7 +254,7 @@ function App() {
         title="refresh"
         onClick={() => deleteAllItems()}
       >
-        <text className="refreshText">☄︎</text>
+        <text className="refreshText">X</text>
       </button>
       <ul className="ul">
         {state.items.map((item) => {
@@ -272,7 +272,6 @@ function App() {
           );
         })}
       </ul>
-      // testing git ddodododo
       <br />
       <text className="msg">{displayMsg()}</text>
       <h2 className="done">done ✔︎ :</h2>

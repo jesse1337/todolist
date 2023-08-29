@@ -64,6 +64,7 @@
 .refreshButton:hover {
   border: 1px solid rgb(139, 139, 139);
   background-color: rgb(182, 181, 181);
+
 }
 .addText {
   font-size: 20px;
