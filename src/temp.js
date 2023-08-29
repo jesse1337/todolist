@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { db } from "./firestore";
-import { serverTimestamp } from "firebase/firestore";
-import { query, orderBy } from "firebase/firestore";
-
 import {
   getFirestore,
   collection,
@@ -41,8 +38,9 @@ function App() {
   };
 
   useEffect(() => {
-    const itemsQuery = query(collection(db, "items"), orderBy("createdAt"));
-    const unsubscribeItems = onSnapshot(itemsQuery, (snapshot) => {
+    const itemsCollection = collection(db, "items");
+
+    const unsubscribe = onSnapshot(itemsCollection, (snapshot) => {
       const itemsData = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
@@ -50,84 +48,49 @@ function App() {
       setItems(itemsData);
     });
 
-    const doneItemsQuery = query(
-      collection(db, "doneItems"),
-      orderBy("createdAt")
-    );
-    const unsubscribeDoneItems = onSnapshot(doneItemsQuery, (snapshot) => {
-      const doneItemsData = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setHistory(doneItemsData);
-    });
-
-    return () => {
-      unsubscribeItems();
-      unsubscribeDoneItems();
-    };
+    return () => unsubscribe();
   }, []);
 
   async function addItem() {
+    //if nothing is there, alert user
+    console.log("added item");
     if (!newItem) {
       alert("no item");
       return;
     }
 
     const item = {
+      id: Math.floor(Math.random() * 1000),
       value: newItem,
-      createdAt: serverTimestamp(),
     };
 
     try {
       await addDoc(collection(db, "items"), item);
-      setNewItem("");
+      console.log("Item added!");
     } catch (e) {
       console.error("Error adding document: ", e);
     }
+
+    setItems((oldList) => [...oldList, item]);
+    setNewItem("");
+    console.log("items length: " + items.length);
   }
 
   async function deleteItem(id) {
-    const doneItem = items.find((item) => item.id === id);
-    if (doneItem) {
-      try {
-        // Add the done item to the doneItems collection
-        await addDoc(collection(db, "doneItems"), doneItem);
-        console.log("Added item to doneItems collection.");
+    const doneItem = items.filter((item) => item.id == id)[0];
+    setHistory((oldList) => [...oldList, doneItem]);
 
-        // Delete the item from the items collection
-        await deleteDoc(doc(db, "items", id));
-        console.log("Deleted item from items collection.");
-      } catch (e) {
-        console.error("Error processing item: ", e);
-      }
-    }
-  }
+    const newArr = items.filter((item) => item.id !== id);
+    setItems(newArr);
 
-  async function deleteAllItems() {
-    const itemsCollection = collection(db, "items");
-    const allItemsSnapshot = await getDocs(itemsCollection);
-
-    const doneItemsCollection = collection(db, "doneItems");
-    const allDoneItemsSnapshot = await getDocs(doneItemsCollection);
-
-    const deletePromises = [];
-
-    allItemsSnapshot.forEach((document) => {
-      deletePromises.push(deleteDoc(doc(db, "items", document.id)));
-    });
-
-    allDoneItemsSnapshot.forEach((document) => {
-      deletePromises.push(deleteDoc(doc(db, "doneItems", document.id)));
-    });
-
+    // Remove from Firestore
     try {
-      await Promise.all(deletePromises);
-      console.log("All items deleted from db.");
+      const itemDoc = doc(db, "items", id);
+      await deleteDoc(itemDoc);
+      console.log("Item deleted!");
     } catch (e) {
-      console.error("Error deleting all documents: ", e);
+      console.error("Error deleting document: ", e);
     }
-    setHistory([]);
   }
 
   function displayMsg() {
@@ -169,7 +132,7 @@ function App() {
       <button
         className="refreshButton"
         title="refresh"
-        onClick={() => deleteAllItems()}
+        onClick={() => refresh()}
       >
         <text className="refreshText">☄︎</text>
       </button>

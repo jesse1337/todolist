@@ -4,7 +4,6 @@
 }
 .App {
   text-align: center;
-  height: 100vh;
   min-height: 100vh;
   background-color: rgb(83, 83, 83);
 }
@@ -25,9 +24,16 @@
   font-size: 40px;
   font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
+.msg{
+  font-size: 30px;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  padding-top:20px;
+  color: rgb(0, 255, 140);
+
+}
 .done {
   font-size: 30px;
-  padding-top: 50px;
+  padding-top: 30px;
   font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 .input {
@@ -38,6 +44,11 @@
   border-radius: 30%;
   margin-left: 5px;
   width: 25px;
+  
+}
+.addButton:hover {
+  border: 1px solid rgb(139, 139, 139);
+  background-color: rgb(182, 181, 181);
 }
 .refreshButton {
   border: none;
@@ -45,6 +56,10 @@
   margin-left: 5px;
   font-size: 20px;
   width: 25px;  
+}
+.refreshButton:hover {
+  border: 1px solid rgb(139, 139, 139);
+  background-color: rgb(182, 181, 181);
 }
 .addText {
   font-size: 20px;
@@ -62,6 +77,7 @@
 
 .deleteButton:hover {
   transform: scale(0.9);
+
 }
 
 .li {
