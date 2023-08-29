@@ -264,7 +264,7 @@ function App() {
         {state.items.map((item) => {
           return (
             <li className="li" key={item.id}>
-              {item.value}
+              {item.value}{" "}
               <button
                 className="deleteButton"
                 title="finished !"
